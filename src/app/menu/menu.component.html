@@ -1,0 +1,17 @@
+<header class="">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class=""><a href="https://www.google.com" class="navbar-brand">Google</a></div>
+
+        <ul class="navbar-nav">
+            <li *ngIf = "hardcodeAuhenticateService.isUserLoggedIn()" class=""><a routerLink="/home/raif" class="nav-link">Home</a></li>
+            <li *ngIf = "hardcodeAuhenticateService.isUserLoggedIn()" class=""><a routerLink="/todo" class="nav-link">ToDos</a></li>
+        </ul>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li *ngIf = "!hardcodeAuhenticateService.isUserLoggedIn()" class=""><a routerLink="/login" class="nav-link">Login</a></li>
+            <li *ngIf = "hardcodeAuhenticateService.isUserLoggedIn()" class=""><a routerLink="/logout" class="nav-link">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<br> <br>
