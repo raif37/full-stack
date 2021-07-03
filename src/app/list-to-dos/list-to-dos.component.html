@@ -1,17 +1,32 @@
-<h1>My ToDo's</h1>
-<div class="container">
+
+
+<div class="container"> <h1>My ToDo's</h1>
+    <div class="alert alert-success" *ngIf='message'>{{message}}</div>
+    <div class="addNew"><button (click)="addTodo()" class = "btn btn-success">Add</button></div>
+  
+</div>
+
+<div class="container customscroll">
 <table class = "table">
 
  <thead class="">
      <tr class="">
-         <th class="">id</th>
-         <th class="">description</th>
+         <th class="">Id</th>
+         <th class="">Description</th>
+         <th class="">TargetDate</th>
+         <th class="">isCompleted?</th>
+         <th class="">Update</th>
+         <th class="">Delete</th>
      </tr>
  </thead>
  <tbody class="">
      <tr *ngFor = "let todo of todos">
          <td class="">{{todo.id}}</td>
          <td class="">{{todo.description}}</td>
+         <td class="">{{todo.targetDate | date}}</td>
+         <td class="">{{todo.done}}</td>
+         <td class=""><button (click)="updateTodo(todo.id)" class = "btn btn-success">Update</button></td>
+         <td class=""><button (click)="deleteTodo(todo.id)" class = "btn btn-warning">Delete</button></td>
      </tr>
  </tbody>
 

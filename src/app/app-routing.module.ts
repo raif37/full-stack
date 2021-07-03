@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RouteGuardServiceService } from './service/route-guard-service.service';
+import { TodoComponent } from './todo/todo.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home/:name', component: HomeComponent, canActivate: [RouteGuardServiceService]},
   {path: 'todo', component: ListToDosComponent, canActivate: [RouteGuardServiceService]},
+  {path: 'todo/:id', component: TodoComponent , canActivate: [RouteGuardServiceService]},
   {path: 'logout', component: LogoutComponent , canActivate: [RouteGuardServiceService]},
+
+  
   {path: '**', component: ErrorComponent}
 ];
 

@@ -7,3 +7,16 @@ You have successfully logged in.
     You can manage your todos <a routerLink = "/todo" class="">here</a>
     </div>
 </div>
+
+<div class="container">
+    Click here to get a customized welcome message
+    <button (click) = "getWelcomeMsgWithParameter()" class= "btn btn-success" style ="margin-left: 5px;">
+        Welcome</button>
+    
+</div>
+
+<div class="container" *ngIf = "msgFrmService">
+    <h2>Your customized Welcome Message</h2>
+    {{msgFrmService}}
+    
+</div>
