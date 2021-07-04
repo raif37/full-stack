@@ -1,3 +1,4 @@
+import { BasicAuthenticationService } from './../service/basic-authentication-service';
 import { HardCodedAuthenticationService } from './../service/hard-coded-authentication.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   public errorMsg = "You are not authorised to view"
   public invalidLogin = false;
   constructor(private route : Router,
-              public hardcodeAuhenticateService: HardCodedAuthenticationService) { }
+              public hardcodeAuhenticateService: HardCodedAuthenticationService,
+              private basicAuthenticationService: BasicAuthenticationService) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,21 @@ export class LoginComponent implements OnInit {
       } else {
         this.invalidLogin = true;
       }
+  }
+
+  basicAuthLogin() {
+    // if(this.username === 'raif' && this.password === 'abc'){
+      this.basicAuthenticationService.executeAuthenticationService(this.username,this.password).subscribe(
+        data => {
+          console.log(data);
+          this.route.navigate(['/home', this.username]);
+          this.invalidLogin = false;
+        },
+        error => {
+          this.invalidLogin = true;
+          console.log(error);
+        }
+      )    
   }
 
 }

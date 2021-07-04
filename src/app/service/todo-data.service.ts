@@ -19,7 +19,7 @@ export class TodoDataService {
 
   retreiveTodo(username, id) {
 
-    return this.http.get<Todo>(`${JPA_URL}//users/${username}/get-todo/${id}`);
+    return this.http.get<Todo>(`${JPA_URL}/users/${username}/get-todo/${id}`);
 
   } 
 

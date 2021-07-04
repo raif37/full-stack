@@ -1,3 +1,4 @@
+import { InterceptorService } from './http/interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,7 +12,7 @@ import { ListToDosComponent } from './list-to-dos/list-to-dos.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
 import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
@@ -32,7 +33,9 @@ import { TodoComponent } from './todo/todo.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService , multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
