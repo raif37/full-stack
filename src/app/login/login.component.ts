@@ -46,4 +46,19 @@ export class LoginComponent implements OnInit {
       )    
   }
 
+  jwtLogin() {
+    // if(this.username === 'raif' && this.password === 'abc'){
+      this.basicAuthenticationService.executeJWTAuthenticationService(this.username,this.password).subscribe(
+        data => {
+          console.log(data);
+          this.route.navigate(['/home', this.username]);
+          this.invalidLogin = false;
+        },
+        error => {
+          this.invalidLogin = true;
+          console.log(error);
+        }
+      )    
+  }
+
 }
